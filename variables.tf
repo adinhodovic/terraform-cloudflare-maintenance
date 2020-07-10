@@ -15,5 +15,6 @@ variable "logo_url" {
 }
 
 variable "white_list_ips" {
-  type = string
+  default = ""
+  type    = string
 }
