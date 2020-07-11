@@ -1,5 +1,5 @@
 resource "cloudflare_worker_script" "this" {
-  name    = "maintenance"
+  name    = format("maintenance-%s", replace(var.cloudflare_zone, ".", "-"))
   content = file(format("%s/maintenance.js", path.module))
 
   plain_text_binding {
