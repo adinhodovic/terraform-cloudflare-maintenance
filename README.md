@@ -1,13 +1,18 @@
 # Terraform-Cloudflare-Maintenance
 
-Dead simple Terraform module to create a *Maintenance Page* using Cloudflare Workers. You can [preview the page here](https://hodovi.cc/maintenance/).
+Dead simple Terraform module to create a *Maintenance Page* using Cloudflare Workers.
+
+## Preview
 
 ![Preview](https://i.imgur.com/taxwrht.png)
 
-# Usage
+You can [preview the full page here](https://hodovi.cc/maintenance/)
+
+## Usage
 
 Simple maintenance page with your logo, font and email.
 
+```terraform
 module "hodovi_cc_maintenance" {
   source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.1.0"
   cloudflare_zone = "hodovi.cc"
@@ -17,8 +22,9 @@ module "hodovi_cc_maintenance" {
   font            = "Poppins"
   logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
 }
+```
 
-# Inputs
+## Inputs
 
 | Variable        | Description                                                  | Required | Type                                           | Default       |
 |-----------------|:------------------------------------------------------------:|:--------:|:----------------------------------------------:|:-------------:|
