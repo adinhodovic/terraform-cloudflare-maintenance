@@ -1,6 +1,8 @@
 # Terraform-Cloudflare-Maintenance
 
-Dead simple Terraform module to create a *Maintenance Page* using Cloudflare Workers.
+Dead simple Terraform module to create a *Maintenance Page* using Cloudflare Workers. You can [preview the page here](https://hodovi.cc/maintenance/).
+
+![Preview](https://i.imgur.com/taxwrht.png)
 
 The following settings are set:
 
