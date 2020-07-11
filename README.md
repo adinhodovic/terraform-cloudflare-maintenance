@@ -7,11 +7,11 @@ using Cloudflare Workers.
 
 ![Preview](https://i.imgur.com/CiguM4w.png)
 
-You can [preview the full page here](https://hodovi.cc/maintenance/)
+You can [preview the full page here](https://hodovi.cc/maintenance/).
 
 ## Usage
 
-Simple maintenance page with your logo, font and email.
+Simple maintenance page with your logo, company name, font and email.
 
 ```terraform
 module "hodovi_cc_maintenance" {
@@ -29,12 +29,13 @@ module "hodovi_cc_maintenance" {
 
 | Variable        | Description                                                  | Required | Type                                           | Default       |
 |-----------------|:------------------------------------------------------------:|:--------:|:----------------------------------------------:|:-------------:|
-| cloudflare_zone | The Cloudflare Zone                                          | True     | String                                         | -             |
-| pattern         | The DNS pattern to apply the Maintenance page to             | True     | String                                         | -             |
-| email           | The email address for support                                | True     | String                                         | -             |
-| company_name    | Company name                                                 | True     | String                                         | -             |
-| font            | The font for the page                                        | false    | String                                         | "Poppins"     |
-| white_list_ips  | The IPS that are whitelisted to bypass the maintenance page. | false    | List separated by commas e.g "1.1.1.1,2.2.2.2" | "placeholder" |
-| logo_url        | The logo to be displayed                                     | True     | String                                         | -             |
+| enabled         | Flag to create/delete the worker route.                      | False    | Bool                                           | true          |
+| cloudflare_zone | The Cloudflare Zone.                                          | True     | String                                         | -             |
+| pattern         | The DNS pattern to deploy the maintenance page to.             | True     | String                                         | -             |
+| email           | The email address for used for support inquiries.                                | True     | String                                         | -             |
+| company_name    | Your company name.                                                 | True     | String                                         | -             |
+| font            | The font that should be used.                                        | False    | String                                         | "Poppins"     |
+| white_list_ips  | The IPS that are whitelisted to bypass the maintenance page. | False    | List separated by commas e.g "1.1.1.1,2.2.2.2" | "placeholder" |
+| logo_url        | The logo to be displayed.                                     | True     | String                                         | -             |
 
 Example can be found in examples/root-example.

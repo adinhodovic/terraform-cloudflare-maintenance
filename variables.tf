@@ -23,6 +23,11 @@ variable "logo_url" {
   type = string
 }
 
+variable "enabled" {
+  type    = bool
+  default = true
+}
+
 variable "white_list_ips" {
   default = "placeholder"
   type    = string
