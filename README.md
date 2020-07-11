@@ -12,11 +12,28 @@ You can [preview the full page here](https://hodovi.cc/maintenance/).
 ## Usage
 
 Simple maintenance page with your logo, fav icon, company name, font and
-email.
+email:
 
 ```terraform
 module "hodovi_cc_maintenance" {
   source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.1.0"
+  cloudflare_zone = "hodovi.cc"
+  pattern         = "hodovi.cc/maintenance/*"
+  company_name    = "HoneyLogic"
+  email           = "support@honeylogic.io"
+  font            = "Poppins"
+  logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic-blue.original.png"
+  favicon_url     = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
+}
+```
+
+Use the enabled flag to enable/disable the Cloudflare route when
+maintenance starts/ends:
+
+```terraform
+module "hodovi_cc_maintenance" {
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.1.0"
+  enabled         = false
   cloudflare_zone = "hodovi.cc"
   pattern         = "hodovi.cc/maintenance/*"
   company_name    = "HoneyLogic"

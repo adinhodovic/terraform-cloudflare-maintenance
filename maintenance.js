@@ -15,10 +15,9 @@ async function fetchAndReplace(request) {
   //Allow users from trusted into site
   if (whitelist.indexOf(request.headers.get("cf-connecting-ip")) > -1)
   {
-    //Fire all other requests directly to our WebServers
     return fetch(request)
   }
-  else //Return maint page if you're not calling from a trusted IP
+  else //Return maintanence for all other users
   {
     // Return modified response.
     return new Response(maintanencePage(COMPANY_NAME, LOGO_URL, FAVICON_URL, FONT, EMAIL), {
