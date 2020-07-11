@@ -18,6 +18,11 @@ resource "cloudflare_worker_script" "this" {
   }
 
   plain_text_binding {
+    name = "FAVICON_URL"
+    text = var.favicon_url
+  }
+
+  plain_text_binding {
     name = "FONT"
     text = var.font
   }

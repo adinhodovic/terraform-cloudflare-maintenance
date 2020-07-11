@@ -23,6 +23,11 @@ variable "logo_url" {
   type = string
 }
 
+variable "favicon_url" {
+  type    = string
+  default = "https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"
+}
+
 variable "enabled" {
   type    = bool
   default = true

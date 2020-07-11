@@ -21,14 +21,14 @@ async function fetchAndReplace(request) {
   else //Return maint page if you're not calling from a trusted IP
   {
     // Return modified response.
-    return new Response(maintanencePage(COMPANY_NAME, LOGO_URL, FONT, EMAIL), {
+    return new Response(maintanencePage(COMPANY_NAME, LOGO_URL, FAVICON_URL, FONT, EMAIL), {
       status: 503,
       headers: modifiedHeaders
     })
   }
 }
 
-let maintanencePage = (company_name, logo_url, font, email) => `
+let maintanencePage = (company_name, logo_url, favicon_url, font, email) => `
 <!doctype html>
 
 <head>
@@ -36,7 +36,7 @@ let maintanencePage = (company_name, logo_url, font, email) => `
 
     <link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet"/>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="icon" href="${logo_url}"/>
+    <link rel="icon" href="${favicon_url}"/>
     <style>
         body {
             text-align: center;
