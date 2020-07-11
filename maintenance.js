@@ -33,9 +33,10 @@ let maintanencePage = (company_name, logo_url, font, email) => `
 
 <head>
     <title>Site Maintenance</title>
-    <link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet">
-    <link rel="icon" href="${logo_url}">
-    </link>
+
+    <link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="icon" href="${logo_url}"/>
     <style>
         body {
             text-align: center;
@@ -45,45 +46,67 @@ let maintanencePage = (company_name, logo_url, font, email) => `
 
         .logo {
             margin-top: 3rem;
-            max-height: 60px;
+            max-height: 35px;
             width: auto;
         }
 
         .content {
             margin: 0 auto;
             max-width: 1000px;
+            width: 90%;
         }
 
         .info {
-            max-width: 500px;
             margin: 0 auto;
-            margin-top: 6rem;
+            margin-top: 3rem;
+            max-width: 500px;
         }
 
         h1 {
             font-weight: 600;
-            font-size: 41px;
+            font-size: 1.8rem;
         }
 
         .image-main {
-            margin-top: 4rem;
+            margin-top: 3rem;
+            max-width: 90%;
         }
 
         hr {
             border: 1px solid rgba(0, 0, 0, 0.08);
 
-            margin: 0px 10px;
-            margin-top: 6rem;
-            margin-bottom: 3rem;
+            margin: 0 auto;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            max-width: 90%;
         }
 
         a {
             text-decoration: none;
-            color: #535353;
+            color: #535353
         }
 
         a:hover {
             color: #0C1231;
+        }
+
+        @media (min-width: 968px) {
+            .logo {
+                max-height: 45px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .info {
+                margin-top: 6rem;
+            }
+
+            hr {
+                margin-top: 6rem;
+                margin-bottom: 3rem;
+            }
         }
     </style>
 </head>
@@ -93,7 +116,7 @@ let maintanencePage = (company_name, logo_url, font, email) => `
         <img class="logo" src="${logo_url}" alt="${company_name}">
         <div class="info">
             <h1>Our site is currently down for maintanence</h1>
-            <p>We apologize for any inconveniences caused and will be online as soon as possible. Please check again in a little while. Thank you!</p>
+            <p>We apologize for any inconveniences caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>
             <p>&mdash; ${company_name}</p>
         </div>
         <img class="image-main" src="https://i.imgur.com/0uJkCM8.png" alt="Maintenance image">
@@ -102,4 +125,3 @@ let maintanencePage = (company_name, logo_url, font, email) => `
     </div>
 </body>
 `;
-
