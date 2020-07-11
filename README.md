@@ -1,7 +1,7 @@
 # Terraform-Cloudflare-Maintenance
 
-Dead simple Terraform module to create a responsive **Maintenance Page**
-using Cloudflare Workers.
+Terraform module to create a responsive **Maintenance Page** using
+Cloudflare Workers.
 
 ## Preview
 
@@ -11,7 +11,8 @@ You can [preview the full page here](https://hodovi.cc/maintenance/).
 
 ## Usage
 
-Simple maintenance page with your logo, company name, font and email.
+Simple maintenance page with your logo, fav icon, company name, font and
+email.
 
 ```terraform
 module "hodovi_cc_maintenance" {
