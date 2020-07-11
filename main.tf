@@ -1,15 +1,6 @@
-resource "cloudflare_workers_kv_namespace" "this" {
-  title = "maintenance"
-}
-
 resource "cloudflare_worker_script" "this" {
   name    = "maintenance"
   content = file(format("%s/maintenance.js", path.module))
-
-  kv_namespace_binding {
-    name         = "maintenance"
-    namespace_id = cloudflare_workers_kv_namespace.this.id
-  }
 
   plain_text_binding {
     name = "COMPANY_NAME"
@@ -24,6 +15,16 @@ resource "cloudflare_worker_script" "this" {
   plain_text_binding {
     name = "LOGO_URL"
     text = var.logo_url
+  }
+
+  plain_text_binding {
+    name = "FONT"
+    text = var.font
+  }
+
+  plain_text_binding {
+    name = "EMAIL"
+    text = var.email
   }
 }
 

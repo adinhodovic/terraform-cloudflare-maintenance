@@ -21,63 +21,85 @@ async function fetchAndReplace(request) {
   else //Return maint page if you're not calling from a trusted IP
   {
     // Return modified response.
-    return new Response(maintPage(COMPANY_NAME, LOGO_URL), {
+    return new Response(maintanencePage(COMPANY_NAME, LOGO_URL, FONT, EMAIL), {
       status: 503,
       headers: modifiedHeaders
     })
   }
 }
 
-let maintPage = (company_name, logo_url) => `
+let maintanencePage = (company_name, logo_url, font, email) => `
 <!doctype html>
-<title>Site Maintenance</title>
-<style>
-    body {
-        text-align: center;
-        padding: 150px;
-    }
 
-    .content {
-        background-color: rgba(255, 255, 255, 0.75);
-        background-size: 100%;
-        color: inherit;
-        padding-top: 1px;
-        padding-bottom: 10px;
-        padding-left: 100px;
-        padding-right: 100px;
-        border-radius: 15px;
-    }
+<head>
+    <title>Site Maintenance</title>
+    <link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet">
+    <link rel="icon" href="${logo_url}">
+    </link>
+    <style>
+        body {
+            text-align: center;
+            font-family: "${font}", sans-serif;
+            color: #0C1231;
+        }
 
-    h1 {
-        font-size: 40pt;
-    }
+        .logo {
+            margin-top: 3rem;
+            max-height: 60px;
+            width: auto;
+        }
 
-    body {
-        font: 20px Helvetica, sans-serif;
-        color: #333;
-    }
+        .content {
+            margin: 0 auto;
+            max-width: 1000px;
+        }
 
-    article {
-        display: block;
-        text-align: left;
-        width: 75%;
-        margin: 0 auto;
-    }
+        .info {
+            max-width: 500px;
+            margin: 0 auto;
+            margin-top: 6rem;
+        }
 
-    a:hover {
-        color: #333;
-        text-decoration: none;
-    }
-</style>
+        h1 {
+            font-weight: 600;
+            font-size: 41px;
+        }
 
-<article>
+        .image-main {
+            margin-top: 4rem;
+        }
+
+        hr {
+            border: 1px solid rgba(0, 0, 0, 0.08);
+
+            margin: 0px 10px;
+            margin-top: 6rem;
+            margin-bottom: 3rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #535353;
+        }
+
+        a:hover {
+            color: #0C1231;
+        }
+    </style>
+</head>
+
+<body>
     <div class="content">
-        <h1>We&rsquo;ll be back soon!</h1>
-        <img src="${logo_url}">
-        <p>We&rsquo;re very sorry for the inconvenience but we&rsquo;re performing maintenance. Please check back soon...</p>
-        <p>&mdash; ${company_name} Team</p>
+        <img class="logo" src="${logo_url}" alt="${company_name}">
+        <div class="info">
+            <h1>Our site is currently down for maintanence</h1>
+            <p>We apologize for any inconveniences caused and will be online as soon as possible. Please check again in a little while. Thank you!</p>
+            <p>&mdash; ${company_name}</p>
+        </div>
+        <img class="image-main" src="https://i.imgur.com/0uJkCM8.png" alt="Maintenance image">
+        <hr />
+        <a href="mailto:${email}?subject=Maintenance">You can reach us at: ${email}</a>
     </div>
-</article>
-
+</body>
 `;
 

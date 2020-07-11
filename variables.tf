@@ -6,6 +6,15 @@ variable "pattern" {
   type = string
 }
 
+variable "font" {
+  type    = string
+  default = "Poppins"
+}
+
+variable "email" {
+  type = string
+}
+
 variable "company_name" {
   type = string
 }
@@ -15,6 +24,6 @@ variable "logo_url" {
 }
 
 variable "white_list_ips" {
-  default = ""
+  default = "placeholder"
   type    = string
 }
