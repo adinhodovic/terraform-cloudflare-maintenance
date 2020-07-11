@@ -28,7 +28,7 @@ variable "enabled" {
   default = true
 }
 
-variable "white_list_ips" {
+variable "whitelist_ips" {
   default = "placeholder"
   type    = string
 }

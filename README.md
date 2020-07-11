@@ -30,12 +30,12 @@ module "hodovi_cc_maintenance" {
 | Variable        | Description                                                  | Required | Type                                           | Default       |
 |-----------------|:------------------------------------------------------------:|:--------:|:----------------------------------------------:|:-------------:|
 | enabled         | Flag to create/delete the worker route.                      | False    | Bool                                           | true          |
-| cloudflare_zone | The Cloudflare Zone.                                          | True     | String                                         | -             |
-| pattern         | The DNS pattern to deploy the maintenance page to.             | True     | String                                         | -             |
-| email           | The email address for used for support inquiries.                                | True     | String                                         | -             |
-| company_name    | Your company name.                                                 | True     | String                                         | -             |
-| font            | The font that should be used.                                        | False    | String                                         | "Poppins"     |
-| white_list_ips  | The IPS that are whitelisted to bypass the maintenance page. | False    | List separated by commas e.g "1.1.1.1,2.2.2.2" | "placeholder" |
-| logo_url        | The logo to be displayed.                                     | True     | String                                         | -             |
+| cloudflare_zone | The Cloudflare Zone.                                         | True     | String                                         | -             |
+| pattern         | The DNS pattern to deploy the maintenance page to.           | True     | String                                         | -             |
+| email           | The email address for used for support inquiries.            | True     | String                                         | -             |
+| company_name    | Your company name.                                           | True     | String                                         | -             |
+| font            | The font that should be used.                                | False    | String                                         | "Poppins"     |
+| whitelist_ips   | The IPS that are whitelisted to bypass the maintenance page. | False    | List separated by commas e.g "1.1.1.1,2.2.2.2" | "placeholder" |
+| logo_url        | The logo to be displayed.                                    | True     | String                                         | -             |
 
 Example can be found in examples/root-example.

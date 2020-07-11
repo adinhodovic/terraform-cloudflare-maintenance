@@ -1,4 +1,4 @@
-const white_list = WHITE_LIST_IPS.split(',');
+const whitelist = WHITELIST_IPS.split(',');
 
 addEventListener("fetch", event => {
   event.respondWith(fetchAndReplace(event.request))
@@ -13,7 +13,7 @@ async function fetchAndReplace(request) {
 
 
   //Allow users from trusted into site
-  if (white_list.indexOf(request.headers.get("cf-connecting-ip")) > -1)
+  if (whitelist.indexOf(request.headers.get("cf-connecting-ip")) > -1)
   {
     //Fire all other requests directly to our WebServers
     return fetch(request)

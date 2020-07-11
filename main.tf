@@ -8,8 +8,8 @@ resource "cloudflare_worker_script" "this" {
   }
 
   plain_text_binding {
-    name = "WHITE_LIST_IPS"
-    text = var.white_list_ips
+    name = "WHITELIST_IPS"
+    text = var.whitelist_ips
   }
 
   plain_text_binding {
