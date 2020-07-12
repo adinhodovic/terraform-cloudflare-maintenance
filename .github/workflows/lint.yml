@@ -25,8 +25,3 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-  eslint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: hallee/eslint-action@1.0.3
