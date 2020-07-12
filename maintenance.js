@@ -1,4 +1,14 @@
+function toTitleCase(str) {
+    return str.replace(
+        /\w\S*/g,
+        function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
+}
+
 const whitelist = WHITELIST_IPS.split(',');
+const google_font = toTitleCase(FONT).replace(" ", "+");
 
 addEventListener("fetch", event => {
   event.respondWith(fetchAndReplace(event.request))
@@ -20,20 +30,20 @@ async function fetchAndReplace(request) {
   else //Return maintanence for all other users
   {
     // Return modified response.
-    return new Response(maintanencePage(COMPANY_NAME, LOGO_URL, FAVICON_URL, FONT, EMAIL), {
+    return new Response(maintanencePage(COMPANY_NAME, LOGO_URL, FAVICON_URL, FONT, google_font, EMAIL), {
       status: 503,
       headers: modifiedHeaders
     })
   }
 }
 
-let maintanencePage = (company_name, logo_url, favicon_url, font, email) => `
+const maintanencePage = (company_name, logo_url, favicon_url, font, google_font, email) => `
 <!doctype html>
 
 <head>
     <title>Site Maintenance</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=${font}&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=${google_font}&display=swap" rel="stylesheet"/>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="icon" href="${favicon_url}"/>
     <style>
