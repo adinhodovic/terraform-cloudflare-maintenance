@@ -16,7 +16,7 @@ email:
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.1.2"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.1.3"
   cloudflare_zone = "hodovi.cc"
   pattern         = "hodovi.cc/maintenance/*"
   company_name    = "HoneyLogic"
@@ -32,7 +32,7 @@ maintenance starts/ends:
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.1.2"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.1.3"
   enabled         = false
   cloudflare_zone = "hodovi.cc"
   pattern         = "hodovi.cc/maintenance/*"
@@ -57,5 +57,8 @@ module "hodovi_cc_maintenance" {
 | whitelist_ips   | The IPS that are whitelisted to bypass the maintenance page.      | False    | List separated by commas e.g "1.1.1.1,2.2.2.2" | "placeholder"                    |
 | logo_url        | The logo to be displayed.                                         | True     | String                                         | -                                |
 | favicon_url     | The favicon to be displayed.                                      | False    | String                                         | A maintenance icon from the web. |
+
+Ensure that the Google Font is identical in casing e.g "PT Sans" can't be
+"Pt Sans" otherwise it'll fail to fetch the font.
 
 Example can be found in examples/root-example.

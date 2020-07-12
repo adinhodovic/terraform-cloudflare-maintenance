@@ -1,14 +1,5 @@
-function toTitleCase(str) {
-    return str.replace(
-        /\w\S*/g,
-        function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    );
-}
-
 const whitelist = WHITELIST_IPS.split(',');
-const google_font = toTitleCase(FONT).replace(" ", "+");
+const google_font = FONT.replace(" ", "+");
 
 addEventListener("fetch", event => {
   event.respondWith(fetchAndReplace(event.request))
