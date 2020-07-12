@@ -1,0 +1,13 @@
+---
+name: Lint
+on: [push, pull_request]
+
+jobs:
+  fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform fmt
+        run: terraform fmt -recursive -diff -check
