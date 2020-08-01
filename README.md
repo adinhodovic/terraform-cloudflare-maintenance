@@ -11,6 +11,9 @@ You can [preview the full page here](https://hodovi.cc/maintenance/).
 
 ## Usage
 
+A detailed explanation of [the implementation is described
+here.](https://hodovi.cc/blog/quick-pretty-and-easy-maintenance-page-using-cloudflare-workers-terraform/)
+
 Simple maintenance page with your logo, fav icon, company name, font and
 email:
 
