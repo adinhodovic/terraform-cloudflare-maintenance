@@ -35,7 +35,7 @@ resource "cloudflare_worker_script" "this" {
 
 data "cloudflare_zones" "this" {
   filter {
-    name = format("%s*", var.cloudflare_zone)
+    name = var.cloudflare_zone
   }
 }
 
