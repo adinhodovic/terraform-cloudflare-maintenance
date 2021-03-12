@@ -116,7 +116,7 @@ const maintanencePage = (company_name, logo_url, favicon_url, font, google_font,
         <img class="logo" src="${logo_url}" alt="${company_name}">
         <div class="info">
             <h1>Our site is currently down for maintenance</h1>
-            <p>We apologize for any inconveniences caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>
+            <p>We apologize for any inconvenience caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>
             <p>&mdash; ${company_name}</p>
         </div>
         <img class="image-main" src="https://i.imgur.com/0uJkCM8.png" alt="Maintenance image">
