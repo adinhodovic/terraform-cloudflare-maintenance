@@ -46,7 +46,7 @@ const maintanencePage = (company_name, logo_url, favicon_url, font, google_font,
 
         .logo {
             margin-top: 3rem;
-            max-height: 35px;
+            max-height: 150px;
             width: auto;
         }
 

@@ -3,7 +3,7 @@ variable "cloudflare_zone" {
 }
 
 variable "pattern" {
-  type = string
+  type = list(string)
 }
 
 variable "font" {
