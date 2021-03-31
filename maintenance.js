@@ -92,7 +92,7 @@ const maintanencePage = (company_name, logo_url, favicon_url, font, google_font,
 
         @media (min-width: 968px) {
             .logo {
-                max-height: 45px;
+                max-height: 150px;
             }
 
             h1 {

@@ -21,7 +21,7 @@ email:
 module "hodovi_cc_maintenance" {
   source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
   cloudflare_zone = "hodovi.cc"
-  pattern         = "hodovi.cc/maintenance/*"
+  patterns        = ["hodovi.cc/maintenance/*"]
   company_name    = "HoneyLogic"
   email           = "support@honeylogic.io"
   font            = "Poppins"
@@ -38,7 +38,7 @@ module "hodovi_cc_maintenance" {
   source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
   enabled         = false
   cloudflare_zone = "hodovi.cc"
-  pattern         = "hodovi.cc/maintenance/*"
+  patterns        = ["hodovi.cc/maintenance/*"]
   company_name    = "HoneyLogic"
   email           = "support@honeylogic.io"
   font            = "Poppins"
