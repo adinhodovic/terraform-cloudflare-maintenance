@@ -2,8 +2,8 @@ variable "cloudflare_zone" {
   type = string
 }
 
-variable "pattern" {
-  type = string
+variable "patterns" {
+  type = list(string)
 }
 
 variable "font" {

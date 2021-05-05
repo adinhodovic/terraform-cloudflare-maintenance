@@ -1,5 +1,4 @@
 const whitelist = WHITELIST_IPS.split(',');
-const google_font = FONT.replace(" ", "+");
 
 addEventListener("fetch", event => {
   event.respondWith(fetchAndReplace(event.request))
@@ -21,14 +20,14 @@ async function fetchAndReplace(request) {
   else //Return maintanence for all other users
   {
     // Return modified response.
-    return new Response(maintanencePage(COMPANY_NAME, LOGO_URL, FAVICON_URL, FONT, google_font, EMAIL), {
+    return new Response(maintenancePage, {
       status: 503,
       headers: modifiedHeaders
     })
   }
 }
 
-const maintanencePage = (company_name, logo_url, favicon_url, font, google_font, email) => `
+const maintenancePage = `
 <!doctype html>
 
 <head>

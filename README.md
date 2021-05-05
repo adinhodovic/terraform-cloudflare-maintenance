@@ -14,14 +14,36 @@ You can [preview the full page here](https://hodovi.cc/maintenance/).
 A detailed explanation of [the implementation can be found
 here.](https://hodovi.cc/blog/quick-pretty-and-easy-maintenance-page-using-cloudflare-workers-terraform/)
 
-Simple maintenance page with your logo, fav icon, company name, font and
-email:
+Export cloudflare credentials
+```bash
+TF_VAR_cloudflare_email=xxx
+TF_VAR_cloudflare_api_key=xxx
+TF_VAR_cloudflare_account_id=xxx
+```
+If using token, make sure it has all the necessary permissions
+
+Simple maintenance page with your logo, fav icon, company name, font and email on a single route:
 
 ```terraform
 module "hodovi_cc_maintenance" {
   source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
   cloudflare_zone = "hodovi.cc"
-  pattern         = "hodovi.cc/maintenance/*"
+  patterns        = ["hodovi.cc/maintenance/*"]
+  company_name    = "HoneyLogic"
+  email           = "support@honeylogic.io"
+  font            = "Poppins"
+  logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic-blue.original.png"
+  favicon_url     = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
+}
+```
+
+Simple maintenance page with your logo, fav icon, company name, font and email with multiple routes on the same domain:
+
+```terraform
+module "hodovi_cc_maintenance" {
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
+  cloudflare_zone = "hodovi.cc"
+  patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
   company_name    = "HoneyLogic"
   email           = "support@honeylogic.io"
   font            = "Poppins"
@@ -38,7 +60,7 @@ module "hodovi_cc_maintenance" {
   source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
   enabled         = false
   cloudflare_zone = "hodovi.cc"
-  pattern         = "hodovi.cc/maintenance/*"
+  patterns        = ["hodovi.cc/maintenance/*"]
   company_name    = "HoneyLogic"
   email           = "support@honeylogic.io"
   font            = "Poppins"
@@ -53,7 +75,7 @@ module "hodovi_cc_maintenance" {
 |-----------------|:-----------------------------------------------------------------:|:--------:|:----------------------------------------------:|:--------------------------------:|
 | enabled         | Flag to create/delete the worker route.                           | False    | Bool                                           | true                             |
 | cloudflare_zone | The Cloudflare Zone.                                              | True     | String                                         | -                                |
-| pattern         | The DNS pattern to deploy the maintenance page to.                | True     | String                                         | -                                |
+| patterns        | The DNS patterns list to deploy the maintenance page to.          | True     | list(String)                                   | -                                |
 | email           | The email address for used for support inquiries.                 | True     | String                                         | -                                |
 | company_name    | Your company name.                                                | True     | String                                         | -                                |
 | font            | [**Google** font](https://fonts.google.com/) that should be used. | False    | String                                         | "Poppins"                        |

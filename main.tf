@@ -1,35 +1,16 @@
 resource "cloudflare_worker_script" "this" {
   name    = format("maintenance-%s", replace(var.cloudflare_zone, ".", "-"))
-  content = file(format("%s/maintenance.js", path.module))
-
-  plain_text_binding {
-    name = "COMPANY_NAME"
-    text = var.company_name
-  }
-
+  content = templatefile("${path.module}/maintenance.js", {
+    company_name  = var.company_name
+    logo_url      = var.logo_url
+    favicon_url   = var.favicon_url
+    font          = var.font
+    email         = var.email
+    google_font   = replace(var.font, " ", "+")
+  })
   plain_text_binding {
     name = "WHITELIST_IPS"
     text = var.whitelist_ips
-  }
-
-  plain_text_binding {
-    name = "LOGO_URL"
-    text = var.logo_url
-  }
-
-  plain_text_binding {
-    name = "FAVICON_URL"
-    text = var.favicon_url
-  }
-
-  plain_text_binding {
-    name = "FONT"
-    text = var.font
-  }
-
-  plain_text_binding {
-    name = "EMAIL"
-    text = var.email
   }
 }
 
@@ -40,8 +21,8 @@ data "cloudflare_zones" "this" {
 }
 
 resource "cloudflare_worker_route" "this" {
-  count       = var.enabled ? 1 : 0
+  count       = var.enabled != false ? length(var.patterns) : 0
   zone_id     = lookup(data.cloudflare_zones.this.zones[0], "id")
-  pattern     = var.pattern
+  pattern     = var.patterns[count.index]
   script_name = cloudflare_worker_script.this.name
 }
