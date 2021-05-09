@@ -3,6 +3,8 @@
 Terraform module to create a responsive **Maintenance Page** using
 Cloudflare Workers.
 
+The module can be used through [Terraform's registry](https://registry.terraform.io/modules/adinhodovic/maintenance/cloudflare/latest).
+
 ## Preview
 
 ![Preview](https://i.imgur.com/CiguM4w.png)
@@ -20,28 +22,13 @@ TF_VAR_cloudflare_email=xxx
 TF_VAR_cloudflare_api_key=xxx
 TF_VAR_cloudflare_account_id=xxx
 ```
-If using token, make sure it has all the necessary permissions
-
-Simple maintenance page with your logo, fav icon, company name, font and email on a single route:
-
-```terraform
-module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
-  cloudflare_zone = "hodovi.cc"
-  patterns        = ["hodovi.cc/maintenance/*"]
-  company_name    = "HoneyLogic"
-  email           = "support@honeylogic.io"
-  font            = "Poppins"
-  logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic-blue.original.png"
-  favicon_url     = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
-}
-```
+If using a token, make sure it has all the necessary permissions
 
 Simple maintenance page with your logo, fav icon, company name, font and email with multiple routes on the same domain:
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.4.0"
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
   company_name    = "HoneyLogic"
@@ -57,7 +44,7 @@ maintenance starts/ends:
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.3.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.4.0"
   enabled         = false
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*"]
