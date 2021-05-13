@@ -17,11 +17,13 @@ A detailed explanation of [the implementation can be found
 here.](https://hodovi.cc/blog/quick-pretty-and-easy-maintenance-page-using-cloudflare-workers-terraform/)
 
 Export cloudflare credentials
+
 ```bash
 TF_VAR_cloudflare_email=xxx
 TF_VAR_cloudflare_api_key=xxx
 TF_VAR_cloudflare_account_id=xxx
 ```
+
 If using a token, make sure it has all the necessary permissions
 
 Simple maintenance page with your logo, fav icon, company name, font and email with multiple routes on the same domain:
@@ -56,21 +58,37 @@ module "hodovi_cc_maintenance" {
 }
 ```
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.13 |
+| cloudflare | > 2.0.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| cloudflare | > 2.0.0 |
+
 ## Inputs
 
-| Variable        | Description                                                       | Required | Type                                           | Default                          |
-|-----------------|:-----------------------------------------------------------------:|:--------:|:----------------------------------------------:|:--------------------------------:|
-| enabled         | Flag to create/delete the worker route.                           | False    | Bool                                           | true                             |
-| cloudflare_zone | The Cloudflare Zone.                                              | True     | String                                         | -                                |
-| patterns        | The DNS patterns list to deploy the maintenance page to.          | True     | list(String)                                   | -                                |
-| email           | The email address for used for support inquiries.                 | True     | String                                         | -                                |
-| company_name    | Your company name.                                                | True     | String                                         | -                                |
-| font            | [**Google** font](https://fonts.google.com/) that should be used. | False    | String                                         | "Poppins"                        |
-| whitelist_ips   | The IPS that are whitelisted to bypass the maintenance page.      | False    | List separated by commas e.g "1.1.1.1,2.2.2.2" | "placeholder"                    |
-| logo_url        | The logo to be displayed.                                         | True     | String                                         | -                                |
-| favicon_url     | The favicon to be displayed.                                      | False    | String                                         | A maintenance icon from the web. |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| cloudflare\_zone | n/a | `string` | n/a | yes |
+| company\_name | n/a | `string` | n/a | yes |
+| email | n/a | `string` | n/a | yes |
+| enabled | n/a | `bool` | `true` | no |
+| favicon\_url | n/a | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
+| font | n/a | `string` | `"Poppins"` | no |
+| logo\_url | n/a | `string` | n/a | yes |
+| patterns | n/a | `list(string)` | n/a | yes |
+| whitelist\_ips | n/a | `string` | `"placeholder"` | no |
 
-Ensure that the Google Font is identical in casing e.g "PT Sans" can't be
+## Notes
+
+Get fonts from [**Google** fonts](https://fonts.google.com/). Ensure that the Google Font is identical in casing e.g "PT Sans" can't be
 "Pt Sans" otherwise it'll fail to fetch the font.
 
 Example can be found in examples/root-example.
+
