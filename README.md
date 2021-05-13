@@ -58,6 +58,8 @@ module "hodovi_cc_maintenance" {
 }
 ```
 
+Example can be found in examples/root-example.
+
 ## Requirements
 
 | Name | Version |
@@ -77,18 +79,15 @@ module "hodovi_cc_maintenance" {
 |------|-------------|------|---------|:--------:|
 | cloudflare\_zone | n/a | `string` | n/a | yes |
 | company\_name | n/a | `string` | n/a | yes |
-| email | n/a | `string` | n/a | yes |
-| enabled | n/a | `bool` | `true` | no |
-| favicon\_url | n/a | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
-| font | n/a | `string` | `"Poppins"` | no |
-| logo\_url | n/a | `string` | n/a | yes |
-| patterns | n/a | `list(string)` | n/a | yes |
-| whitelist\_ips | n/a | `string` | `"placeholder"` | no |
+| email | The email address for used for support inquiries. | `string` | n/a | yes |
+| enabled | Flag to create/delete the worker route. | `bool` | `true` | no |
+| favicon\_url | The favicon to be displayed. Default to a maintenance icon from the web. | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
+| font | [\*\*Google\*\* font](https://fonts.google.com/) that should be used. | `string` | `"Poppins"` | no |
+| logo\_url | The logo to be displayed. | `string` | n/a | yes |
+| patterns | The DNS pattern list to deploy the maintenance page to. | `list(string)` | n/a | yes |
+| whitelist\_ips | The IPs that are whitelisted to bypass the maintenance page. | `string` | `"placeholder"` | no |
 
 ## Notes
 
 Get fonts from [**Google** fonts](https://fonts.google.com/). Ensure that the Google Font is identical in casing e.g "PT Sans" can't be
 "Pt Sans" otherwise it'll fail to fetch the font.
-
-Example can be found in examples/root-example.
-

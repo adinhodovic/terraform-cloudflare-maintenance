@@ -3,16 +3,19 @@ variable "cloudflare_zone" {
 }
 
 variable "patterns" {
-  type = list(string)
+  type        = list(string)
+  description = "The DNS pattern list to deploy the maintenance page to."
 }
 
 variable "font" {
-  type    = string
-  default = "Poppins"
+  type        = string
+  description = "[**Google** font](https://fonts.google.com/) that should be used."
+  default     = "Poppins"
 }
 
 variable "email" {
-  type = string
+  type        = string
+  description = "The email address for used for support inquiries."
 }
 
 variable "company_name" {
@@ -20,20 +23,24 @@ variable "company_name" {
 }
 
 variable "logo_url" {
-  type = string
+  type        = string
+  description = "The logo to be displayed."
 }
 
 variable "favicon_url" {
-  type    = string
-  default = "https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"
+  type        = string
+  default     = "https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"
+  description = "The favicon to be displayed. Default to a maintenance icon from the web."
 }
 
 variable "enabled" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
+  description = "Flag to create/delete the worker route."
 }
 
 variable "whitelist_ips" {
-  default = "placeholder"
-  type    = string
+  default     = "placeholder"
+  description = "The IPs that are whitelisted to bypass the maintenance page."
+  type        = string
 }
