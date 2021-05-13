@@ -79,13 +79,13 @@ Example can be found in examples/root-example.
 |------|-------------|------|---------|:--------:|
 | cloudflare\_zone | n/a | `string` | n/a | yes |
 | company\_name | n/a | `string` | n/a | yes |
-| email | The email address for used for support inquiries. | `string` | n/a | yes |
+| email | The email address to used for support inquiries. | `string` | n/a | yes |
 | enabled | Flag to create/delete the worker route. | `bool` | `true` | no |
-| favicon\_url | The favicon to be displayed. Default to a maintenance icon from the web. | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
-| font | [\*\*Google\*\* font](https://fonts.google.com/) that should be used. | `string` | `"Poppins"` | no |
+| favicon\_url | The favicon to be displayed. Defaults to a maintenance icon from the web. | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
+| font | [Google font](https://fonts.google.com/) that should be used. | `string` | `"Poppins"` | no |
 | logo\_url | The logo to be displayed. | `string` | n/a | yes |
 | patterns | The DNS pattern list to deploy the maintenance page to. | `list(string)` | n/a | yes |
-| whitelist\_ips | The IPs that are whitelisted to bypass the maintenance page. | `string` | `"placeholder"` | no |
+| whitelist\_ips | The IPs that are white listed to bypass the maintenance page. | `string` | `"placeholder"` | no |
 
 ## Notes
 

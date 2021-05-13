@@ -9,13 +9,13 @@ variable "patterns" {
 
 variable "font" {
   type        = string
-  description = "[**Google** font](https://fonts.google.com/) that should be used."
+  description = "[Google font](https://fonts.google.com/) that should be used."
   default     = "Poppins"
 }
 
 variable "email" {
   type        = string
-  description = "The email address for used for support inquiries."
+  description = "The email address to used for support inquiries."
 }
 
 variable "company_name" {
@@ -30,7 +30,7 @@ variable "logo_url" {
 variable "favicon_url" {
   type        = string
   default     = "https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"
-  description = "The favicon to be displayed. Default to a maintenance icon from the web."
+  description = "The favicon to be displayed. Defaults to a maintenance icon from the web."
 }
 
 variable "enabled" {
@@ -41,6 +41,6 @@ variable "enabled" {
 
 variable "whitelist_ips" {
   default     = "placeholder"
-  description = "The IPs that are whitelisted to bypass the maintenance page."
+  description = "The IPs that are white listed to bypass the maintenance page."
   type        = string
 }
