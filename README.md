@@ -92,6 +92,3 @@ Get fonts from [**Google** fonts](https://fonts.google.com/). Ensure that the Go
 
 Example can be found in examples/root-example.
 
-## Outputs
-
-No output.
