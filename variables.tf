@@ -18,6 +18,12 @@ variable "email" {
   description = "The email address to used for support inquiries."
 }
 
+variable "statuspage_url" {
+  type        = string
+  description = "The status page address to get updated information."
+  default     = "null"
+}
+
 variable "company_name" {
   type = string
 }

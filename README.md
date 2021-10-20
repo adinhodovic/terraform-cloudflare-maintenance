@@ -7,7 +7,7 @@ The module can be used through [Terraform's registry](https://registry.terraform
 
 ## Preview
 
-![Preview](https://i.imgur.com/CiguM4w.png)
+![Preview](https://i.imgur.com/G8fJ2mj.png)
 
 You can [preview the full page here](https://hodovi.cc/maintenance/).
 
@@ -35,6 +35,7 @@ module "hodovi_cc_maintenance" {
   patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
   company_name    = "HoneyLogic"
   email           = "support@honeylogic.io"
+  statuspage_url  = "https://status.hodovi.cc"
   font            = "Poppins"
   logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic-blue.original.png"
   favicon_url     = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
@@ -52,6 +53,7 @@ module "hodovi_cc_maintenance" {
   patterns        = ["hodovi.cc/maintenance/*"]
   company_name    = "HoneyLogic"
   email           = "support@honeylogic.io"
+  statuspage_url  = "null"
   font            = "Poppins"
   logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic-blue.original.png"
   favicon_url     = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
@@ -80,6 +82,7 @@ Example can be found in examples/root-example.
 | cloudflare\_zone | n/a | `string` | n/a | yes |
 | company\_name | n/a | `string` | n/a | yes |
 | email | The email address to used for support inquiries. | `string` | n/a | yes |
+| statuspage\_url | The status page address to get updated information. | `string` | null | no |
 | enabled | Flag to create/delete the worker route. | `bool` | `true` | no |
 | favicon\_url | The favicon to be displayed. Defaults to a maintenance icon from the web. | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
 | font | [Google font](https://fonts.google.com/) that should be used. | `string` | `"Poppins"` | no |

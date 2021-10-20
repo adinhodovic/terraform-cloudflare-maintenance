@@ -4,6 +4,7 @@ module "hodovi_cc_maintenance" {
   patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
   company_name    = "HoneyLogic"
   email           = "support@honeylogic.io"
+  statuspage_url  = "https://status.hodovi.cc"
   font            = "Lato"
   logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
 }
