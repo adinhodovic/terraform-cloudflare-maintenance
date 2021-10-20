@@ -1,12 +1,13 @@
 resource "cloudflare_worker_script" "this" {
   name = format("maintenance-%s", replace(var.cloudflare_zone, ".", "-"))
   content = templatefile("${path.module}/maintenance.js", {
-    company_name = var.company_name
-    logo_url     = var.logo_url
-    favicon_url  = var.favicon_url
-    font         = var.font
-    email        = var.email
-    google_font  = replace(var.font, " ", "+")
+    company_name    = var.company_name
+    logo_url        = var.logo_url
+    favicon_url     = var.favicon_url
+    font            = var.font
+    email           = var.email
+    statuspage_url  = var.statuspage_url
+    google_font     = replace(var.font, " ", "+")
   })
   plain_text_binding {
     name = "WHITELIST_IPS"

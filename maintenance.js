@@ -116,6 +116,9 @@ const maintenancePage = `
         <div class="info">
             <h1>Our site is currently down for maintenance</h1>
             <p>We apologize for any inconvenience caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>
+            %{ if statuspage_url != "null" }
+            <p>You can follow the updated information on our <a href="${statuspage_url}">status page</a>.</p>
+            %{ endif }
             <p>&mdash; ${company_name}</p>
         </div>
         <img class="image-main" src="https://i.imgur.com/0uJkCM8.png" alt="Maintenance image">
