@@ -13,8 +13,7 @@ You can [preview the full page here](https://hodovi.cc/maintenance/).
 
 ## Usage
 
-A detailed explanation of [the implementation can be found
-here.](https://hodovi.cc/blog/quick-pretty-and-easy-maintenance-page-using-cloudflare-workers-terraform/)
+A detailed explanation of [the implementation can be found here.](https://hodovi.cc/blog/quick-pretty-and-easy-maintenance-page-using-cloudflare-workers-terraform/)
 
 Export cloudflare credentials
 
@@ -62,6 +61,8 @@ module "hodovi_cc_maintenance" {
 
 Example can be found in examples/root-example.
 
+<!-- BEGIN_TF_DOCS -->
+
 ## Requirements
 
 | Name | Version |
@@ -89,6 +90,8 @@ Example can be found in examples/root-example.
 | logo\_url | The logo to be displayed. | `string` | n/a | yes |
 | patterns | The DNS pattern list to deploy the maintenance page to. | `list(string)` | n/a | yes |
 | whitelist\_ips | The IPs that are white listed to bypass the maintenance page. | `string` | `"placeholder"` | no |
+
+<!-- END_TF_DOCS -->
 
 ## Notes
 

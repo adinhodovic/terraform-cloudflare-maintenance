@@ -46,7 +46,13 @@ variable "enabled" {
 }
 
 variable "whitelist_ips" {
-  default     = "placeholder"
-  description = "The IPs that are white listed to bypass the maintenance page."
+  default     = "null"
+  description = "The IPs that are whitelisted to bypass the maintenance page."
+  type        = string
+}
+
+variable "whitelist_path" {
+  default     = "null"
+  description = "The paths that are whitelisted defined with a regex expression to bypass the maintenance page."
   type        = string
 }

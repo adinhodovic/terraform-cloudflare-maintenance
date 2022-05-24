@@ -1,5 +1,3 @@
-const whitelist = WHITELIST_IPS.split(',');
-
 addEventListener("fetch", event => {
   event.respondWith(fetchAndReplace(event.request))
 })
@@ -11,20 +9,28 @@ async function fetchAndReplace(request) {
   modifiedHeaders.set('Content-Type', 'text/html')
   modifiedHeaders.append('Pragma', 'no-cache')
 
+  // Allow users from configured IPs into site
+  if (WHITELIST_IPS !== "null") {
+    if (WHITELIST_IPS.split(',').indexOf(request.headers.get("cf-connecting-ip")) > -1)
+    {
+      return fetch(request)
+    }
+  }
 
-  //Allow users from trusted into site
-  if (whitelist.indexOf(request.headers.get("cf-connecting-ip")) > -1)
-  {
-    return fetch(request)
+  // Allow users to access paths that are whitelisted using regex expressions
+  if (WHITELIST_PATH !== "null") {
+    const { pathname } = new URL(request.url);
+    if (pathname.match(WHITELIST_PATH))
+    {
+      return fetch(request)
+    }
   }
-  else //Return maintanence for all other users
-  {
+
     // Return modified response.
-    return new Response(maintenancePage, {
-      status: 503,
-      headers: modifiedHeaders
-    })
-  }
+  return new Response(maintenancePage, {
+    status: 503,
+    headers: modifiedHeaders
+  })
 }
 
 const maintenancePage = `
