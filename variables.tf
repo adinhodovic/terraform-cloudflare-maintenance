@@ -20,8 +20,8 @@ variable "email" {
 
 variable "statuspage_url" {
   type        = string
-  description = "The status page address to get updated information."
   default     = "null"
+  description = "The status page address to get updated information."
 }
 
 variable "company_name" {
@@ -46,7 +46,13 @@ variable "enabled" {
 }
 
 variable "whitelist_ips" {
-  default     = "placeholder"
-  description = "The IPs that are white listed to bypass the maintenance page."
   type        = string
+  default     = "null"
+  description = "The IPs that are whitelisted to bypass the maintenance page."
+}
+
+variable "whitelist_path" {
+  type        = string
+  default     = "null"
+  description = "The paths that are whitelisted defined with a regex expression to bypass the maintenance page."
 }
