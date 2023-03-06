@@ -1,106 +1,37 @@
-# Terraform-Cloudflare-Maintenance
+Cloudflare Maintenance Page
 
-Terraform module to create a responsive **Maintenance Page** using
-Cloudflare Workers.
+This Cloudflare script intercepts all incoming requests and checks if the request is coming from an IP that is in the whitelist or if the request path matches a whitelisted path. If the request is not whitelisted, it returns a maintenance page.
 
-The module can be used through [Terraform's registry](https://registry.terraform.io/modules/adinhodovic/maintenance/cloudflare/latest).
+Installation
 
-## Preview
+To use this script, you must have a Cloudflare account and access to the Workers section of the Cloudflare dashboard. Follow these steps to install the script:
 
-![Preview](https://i.imgur.com/G8fJ2mj.png)
+1. Copy the code from index.js in this repository.
+2. Open the Cloudflare dashboard and navigate to the Workers section.
+3. Click the "Create a Worker" button and paste the code into the editor.
+4. Click the "Save and Deploy" button to deploy the worker.
 
-You can [preview the full page here](https://hodovi.cc/maintenance/).
+Configuration
 
-## Usage
+This script can be configured using environment variables. The following variables can be set:
 
-A detailed explanation of [the implementation can be found here.](https://hodovi.cc/blog/quick-pretty-and-easy-maintenance-page-using-cloudflare-workers-terraform/)
+- WHITELIST_IPS: A comma-separated list of IP addresses that are whitelisted.
+- WHITELIST_PATH: A regular expression string that matches whitelisted paths.
 
-Export cloudflare credentials
+Additionally, the following variables in the code can be customized:
 
-```bash
-TF_VAR_cloudflare_email=xxx
-TF_VAR_cloudflare_api_key=xxx
-TF_VAR_cloudflare_account_id=xxx
-```
+- google_font: The name of the Google font used in the maintenance page.
+- font: The name of the font used in the maintenance page.
+- favicon_url: The URL of the favicon used in the maintenance page.
+- logo_url: The URL of the logo used in the maintenance page.
+- company_name: The name of your company or website.
+- maintenance_image_url: The URL of the maintenance image used in the maintenance page.
+- support_email: The email address for contacting support.
 
-If using a token, make sure it has all the necessary permissions
+Usage
 
-Simple maintenance page with your logo, fav icon, company name, font and email with multiple routes on the same domain:
+Once the script is installed and configured, it will intercept all incoming requests and check if the request is whitelisted. If the request is not whitelisted, it will return a maintenance page. The maintenance page can be customized by editing the HTML in the maintenancePage variable.
 
-```terraform
-module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.6.0"
-  cloudflare_zone = "hodovi.cc"
-  patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
-  company_name    = "HoneyLogic"
-  email           = "support@honeylogic.io"
-  statuspage_url  = "https://status.hodovi.cc"
-  font            = "Poppins"
-  logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic-blue.original.png"
-  favicon_url     = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
-}
-```
+License
 
-Use the enabled flag to enable/disable the Cloudflare route when
-maintenance starts/ends:
-
-```terraform
-module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.6.0"
-  enabled         = false
-  cloudflare_zone = "hodovi.cc"
-  patterns        = ["hodovi.cc/maintenance/*"]
-  company_name    = "HoneyLogic"
-  email           = "support@honeylogic.io"
-  statuspage_url  = "null"
-  font            = "Poppins"
-  logo_url        = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic-blue.original.png"
-  favicon_url     = "https://s3.eu-west-1.amazonaws.com/honeylogic.io/media/images/Honeylogic_-_icon.original.height-80.png"
-}
-```
-
-Example can be found in examples/root-example.
-
-<!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| terraform | >= 0.13 |
-| cloudflare | > 2.0.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| cloudflare | > 2.0.0 |
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [cloudflare_worker_route.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/worker_route) | resource |
-| [cloudflare_worker_script.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/worker_script) | resource |
-| [cloudflare_zones.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zones) | data source |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| cloudflare\_zone | n/a | `string` | n/a | yes |
-| company\_name | n/a | `string` | n/a | yes |
-| email | The email address to used for support inquiries. | `string` | n/a | yes |
-| enabled | Flag to create/delete the worker route. | `bool` | `true` | no |
-| favicon\_url | The favicon to be displayed. Defaults to a maintenance icon from the web. | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
-| font | [Google font](https://fonts.google.com/) that should be used. | `string` | `"Poppins"` | no |
-| logo\_url | The logo to be displayed. | `string` | n/a | yes |
-| patterns | The DNS pattern list to deploy the maintenance page to. | `list(string)` | n/a | yes |
-| statuspage\_url | The status page address to get updated information. | `string` | `"null"` | no |
-| whitelist\_ips | The IPs that are whitelisted to bypass the maintenance page. | `string` | `"null"` | no |
-| whitelist\_path | The paths that are whitelisted defined with a regex expression to bypass the maintenance page. | `string` | `"null"` | no |
-<!-- END_TF_DOCS -->
-
-## Notes
-
-Get fonts from [**Google** fonts](https://fonts.google.com/). Ensure that the Google Font is identical in casing e.g "PT Sans" can't be
-"Pt Sans" otherwise it'll fail to fetch the font.
+This project is licensed under the MIT License - see the LICENSE file for details.
