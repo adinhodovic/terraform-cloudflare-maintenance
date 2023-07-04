@@ -1,4 +1,5 @@
 resource "cloudflare_worker_script" "this" {
+  account_id = var.account_id
   name = format("maintenance-%s", replace(var.cloudflare_zone, ".", "-"))
   content = templatefile("${path.module}/maintenance.js", {
     company_name   = var.company_name
@@ -22,6 +23,7 @@ resource "cloudflare_worker_script" "this" {
 }
 
 data "cloudflare_zones" "this" {
+  account_id = var.account_id
   filter {
     name = var.cloudflare_zone
   }

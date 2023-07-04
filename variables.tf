@@ -1,3 +1,9 @@
+variable "account_id" {
+  type = string
+  description = "Cloudflare account id"
+  default = null
+}
+
 variable "cloudflare_zone" {
   type = string
 }
