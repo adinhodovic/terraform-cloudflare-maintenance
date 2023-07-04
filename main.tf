@@ -23,8 +23,8 @@ resource "cloudflare_worker_script" "this" {
 }
 
 data "cloudflare_zones" "this" {
-  account_id = var.account_id
   filter {
+    account_id = var.account_id
     name = var.cloudflare_zone
   }
 }
