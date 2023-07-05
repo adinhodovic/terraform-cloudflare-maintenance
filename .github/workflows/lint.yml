@@ -12,12 +12,14 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: hashicorp/setup-terraform@v1
+      - name: Checkout Git
+        uses: actions/checkout@v2
 
-      - name: Terraform fmt
-        run: terraform fmt -recursive -diff -check
-        continue-on-error: true
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Format
+        run: terraform fmt -diff -check
 
       - name: Terraform Init
         run: terraform init
