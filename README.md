@@ -29,7 +29,7 @@ Simple maintenance page with your logo, fav icon, company name, font and email w
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.6.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.7.0"
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
   company_name    = "HoneyLogic"
@@ -46,7 +46,7 @@ maintenance starts/ends:
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.6.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=v0.7.0"
   enabled         = false
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*"]
@@ -67,13 +67,13 @@ Example can be found in examples/root-example.
 | Name | Version |
 |------|---------|
 | terraform | >= 0.13 |
-| cloudflare | > 2.0.0 |
+| cloudflare | >= 3.31.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| cloudflare | > 2.0.0 |
+| cloudflare | >= 3.31.0 |
 
 ## Resources
 
@@ -87,6 +87,7 @@ Example can be found in examples/root-example.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| account\_id | Cloudflare account id | `string` | `null` | no |
 | cloudflare\_zone | n/a | `string` | n/a | yes |
 | company\_name | n/a | `string` | n/a | yes |
 | email | The email address to used for support inquiries. | `string` | n/a | yes |
