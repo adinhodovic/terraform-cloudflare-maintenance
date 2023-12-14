@@ -1,44 +1,14 @@
 addEventListener("fetch", event => {
-  event.respondWith(fetchAndReplace(event.request))
-})
+  event.respondWith(handleRequest(event.request))
+});
 
-async function fetchAndReplace(request) {
-
-  let modifiedHeaders = new Headers()
-
-  modifiedHeaders.set('Content-Type', 'text/html')
-  modifiedHeaders.append('Pragma', 'no-cache')
-
-  // Allow users from configured IPs into site
-  if (WHITELIST_IPS !== "null") {
-    if (WHITELIST_IPS.split(',').indexOf(request.headers.get("cf-connecting-ip")) > -1)
-    {
-      return fetch(request)
-    }
-  }
-
-  // Allow users to access paths that are whitelisted using regex expressions
-  if (WHITELIST_PATH !== "null") {
-    const { pathname } = new URL(request.url);
-    if (pathname.match(WHITELIST_PATH))
-    {
-      return fetch(request)
-    }
-  }
-
-    // Return modified response.
-  return new Response(maintenancePage, {
-    status: 503,
-    headers: modifiedHeaders
-  })
-}
+const whitelistIps = process.env.WHITELIST_IPS?.split(',') || null;
+const whitelistPath = process.env.WHITELIST_PATH ? new RegExp(process.env.WHITELIST_PATH) : null;
 
 const maintenancePage = `
-<!doctype html>
-
-<head>
+  <!doctype html>
+  <head>
     <title>Site Maintenance</title>
-
     <link href="https://fonts.googleapis.com/css2?family=${google_font}&display=swap" rel="stylesheet"/>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="icon" href="${favicon_url}"/>
@@ -79,7 +49,6 @@ const maintenancePage = `
 
         hr {
             border: 1px solid rgba(0, 0, 0, 0.08);
-
             margin: 0 auto;
             margin-top: 2rem;
             margin-bottom: 1rem;
@@ -114,22 +83,28 @@ const maintenancePage = `
             }
         }
     </style>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="content">
-        <img class="logo" src="${logo_url}" alt="${company_name}">
-        <div class="info">
-            <h1>Our site is currently down for maintenance</h1>
-            <p>We apologize for any inconvenience caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>
-            %{ if statuspage_url != "null" }
-            <p>You can follow the updated information on our <a href="${statuspage_url}">status page</a>.</p>
-            %{ endif }
-            <p>&mdash; ${company_name}</p>
-        </div>
-        <img class="image-main" src="https://i.imgur.com/0uJkCM8.png" alt="Maintenance image">
-        <hr />
-        <a href="mailto:${email}?subject=Maintenance">You can reach us at: ${email}</a>
+      <img class="logo" src="${logo_url}" alt="${company_name}">
+      <div class="info">
+        <h1>Our site is currently undergoing maintenance. We apologize for the inconvenience and will be back online soon.</h1>
+      </div>
     </div>
-</body>
+    <img class="image-main" src="${maintenance_image_url}" alt="Maintenance">
+    <hr>
+    <div class="info">
+      <p>In the meantime, you can contact us at <a href="mailto:${support_email}">${support_email}</a> for any urgent matters.</p>
+    </div>
+  </body>
+</html>
 `;
+
+async function handleRequest(request) {
+  const { headers } = request;
+  const requestPath = new URL(request.url).pathname;
+  const remoteAddress = headers.get("cf-connecting-ip") || headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || request.headers.get("x-client-ip") || request.headers.get("x-remote-ip") || request.connection.remoteAddress;
+
+  // check if the request is coming from a whitelisted IP
+  if (whitelistIps?.includes(remoteAddress)) {
+    return fetch(request);
