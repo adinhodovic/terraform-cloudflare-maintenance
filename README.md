@@ -1,7 +1,8 @@
 # Terraform-Cloudflare-Maintenance
 
-Terraform module to create a responsive **Maintenance Page** using
-Cloudflare Workers.
+Terraform module to create a responsive **Maintenance Page** using Cloudflare Workers.
+
+The Cloudflare script intercepts all incoming requests and checks if the request is coming from an IP that is in the whitelist or if the request path matches a whitelisted path. If the request is not whitelisted, it returns a maintenance page.
 
 The module can be used through [Terraform's registry](https://registry.terraform.io/modules/adinhodovic/maintenance/cloudflare/latest).
 
