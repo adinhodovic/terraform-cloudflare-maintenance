@@ -1,4 +1,4 @@
-resource "cloudflare_worker_script" "this" {
+resource "cloudflare_workers_script" "this" {
   account_id = var.account_id
   name       = format("maintenance-%s", replace(var.cloudflare_zone, ".", "-"))
   content = templatefile("${path.module}/maintenance.js", {
@@ -29,9 +29,9 @@ data "cloudflare_zones" "this" {
   }
 }
 
-resource "cloudflare_worker_route" "this" {
+resource "cloudflare_workers_route" "this" {
   count       = var.enabled != false ? length(var.patterns) : 0
   zone_id     = lookup(data.cloudflare_zones.this.zones[0], "id")
   pattern     = var.patterns[count.index]
-  script_name = cloudflare_worker_script.this.name
+  script_name = cloudflare_workers_script.this.name
 }
