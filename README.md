@@ -30,7 +30,7 @@ Simple maintenance page with your logo, fav icon, company name, font and email w
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.7.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.8.0"
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
   company_name    = "HoneyLogic"
@@ -47,7 +47,7 @@ maintenance starts/ends:
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.7.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.8.0"
   enabled         = false
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*"]
@@ -80,8 +80,8 @@ Example can be found in examples/root-example.
 
 | Name | Type |
 |------|------|
-| [cloudflare_worker_route.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/worker_route) | resource |
-| [cloudflare_worker_script.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/worker_script) | resource |
+| [cloudflare_workers_route.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/workers_route) | resource |
+| [cloudflare_workers_script.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/workers_script) | resource |
 | [cloudflare_zones.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zones) | data source |
 
 ## Inputs
