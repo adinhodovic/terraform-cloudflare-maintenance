@@ -11,14 +11,15 @@ resource "cloudflare_workers_script" "this" {
     google_font    = replace(var.font, " ", "+")
   })
 
-  bindings = [{
-    name = "WHITELIST_IPS"
-    type = "plain"
-    text = var.whitelist_ips
+  bindings = [
+    {
+      name = "WHITELIST_IPS"
+      type = "plain_text"
+      text = var.whitelist_ips
     },
     {
       name = "WHITELIST_PATH"
-      type = "plain"
+      type = "plain_text"
       text = var.whitelist_path
     }
   ]
