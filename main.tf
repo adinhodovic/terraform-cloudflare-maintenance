@@ -35,7 +35,7 @@ data "cloudflare_zone" "this" {
 
 resource "cloudflare_workers_route" "this" {
   count   = var.enabled != false ? length(var.patterns) : 0
-  zone_id = data.cloudflare_zone.this.id
+  zone_id = data.cloudflare_zone.this.zone_id
   pattern = var.patterns[count.index]
   script  = cloudflare_workers_script.this.script_name
 }
