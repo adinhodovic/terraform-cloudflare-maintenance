@@ -45,6 +45,12 @@ variable "favicon_url" {
   description = "The favicon to be displayed. Defaults to a maintenance icon from the web."
 }
 
+variable "image_url" {
+  type        = string
+  default     = "https://i.imgur.com/0uJkCM8.png"
+  description = "The main image to be displayed."
+}
+
 variable "enabled" {
   type        = bool
   default     = true
