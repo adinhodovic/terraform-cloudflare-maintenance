@@ -127,7 +127,9 @@ const maintenancePage = `
             %{ endif }
             <p>&mdash; ${company_name}</p>
         </div>
-        <img class="image-main" src="https://i.imgur.com/0uJkCM8.png" alt="Maintenance image">
+        %{ if image_url != "" }
+        <img class="image-main" src="${image_url}" alt="Maintenance image">
+        %{ endif }
         <hr />
         <a href="mailto:${email}?subject=Maintenance">You can reach us at: ${email}</a>
     </div>

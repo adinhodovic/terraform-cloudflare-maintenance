@@ -5,6 +5,7 @@ resource "cloudflare_workers_script" "this" {
     company_name   = var.company_name
     logo_url       = var.logo_url
     favicon_url    = var.favicon_url
+    image_url      = var.image_url
     font           = var.font
     email          = var.email
     statuspage_url = var.statuspage_url

@@ -67,7 +67,7 @@ Example can be found in examples/root-example.
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13 |
+| terraform | >= 1.0.0 |
 | cloudflare | >= 5.1.0 |
 
 ## Providers
@@ -82,7 +82,7 @@ Example can be found in examples/root-example.
 |------|------|
 | [cloudflare_workers_route.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/workers_route) | resource |
 | [cloudflare_workers_script.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/workers_script) | resource |
-| [cloudflare_zones.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zones) | data source |
+| [cloudflare_zone.this](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zone) | data source |
 
 ## Inputs
 
@@ -95,6 +95,7 @@ Example can be found in examples/root-example.
 | enabled | Flag to create/delete the worker route. | `bool` | `true` | no |
 | favicon\_url | The favicon to be displayed. Defaults to a maintenance icon from the web. | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
 | font | [Google font](https://fonts.google.com/) that should be used. | `string` | `"Poppins"` | no |
+| image\_url | The main image to be displayed. | `string` | `"https://i.imgur.com/0uJkCM8.png"` | no |
 | logo\_url | The logo to be displayed. | `string` | n/a | yes |
 | patterns | The DNS pattern list to deploy the maintenance page to. | `list(string)` | n/a | yes |
 | statuspage\_url | The status page address to get updated information. | `string` | `"null"` | no |
