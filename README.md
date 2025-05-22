@@ -96,6 +96,7 @@ Example can be found in examples/root-example.
 | favicon\_url | The favicon to be displayed. Defaults to a maintenance icon from the web. | `string` | `"https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/maintenance-512.png"` | no |
 | font | [Google font](https://fonts.google.com/) that should be used. | `string` | `"Poppins"` | no |
 | image\_url | The main image to be displayed. | `string` | `"https://i.imgur.com/0uJkCM8.png"` | no |
+| info\_html | The HTML to be displayed in the info section. | `string` | `"<h1>Our site is currently down for maintenance</h1>\n<p>We apologize for any inconvenience caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>\n"` | no |
 | logo\_url | The logo to be displayed. | `string` | n/a | yes |
 | patterns | The DNS pattern list to deploy the maintenance page to. | `list(string)` | n/a | yes |
 | statuspage\_url | The status page address to get updated information. | `string` | `"null"` | no |
