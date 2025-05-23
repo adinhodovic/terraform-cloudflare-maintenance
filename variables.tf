@@ -51,6 +51,15 @@ variable "image_url" {
   description = "The main image to be displayed."
 }
 
+variable "info_html" {
+  type        = string
+  default     = <<-EOT
+    <h1>Our site is currently down for maintenance</h1>
+    <p>We apologize for any inconvenience caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>
+  EOT
+  description = "The HTML to be displayed in the info section."
+}
+
 variable "enabled" {
   type        = bool
   default     = true

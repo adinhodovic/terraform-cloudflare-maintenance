@@ -120,8 +120,9 @@ const maintenancePage = `
     <div class="content">
         <img class="logo" src="${logo_url}" alt="${company_name}">
         <div class="info">
-            <h1>Our site is currently down for maintenance</h1>
-            <p>We apologize for any inconvenience caused and we will be online as soon as possible. Please check again in a little while. Thank you!</p>
+            {% if info_html != "" %}
+            ${info_html}
+            {% endif %}
             %{ if statuspage_url != "null" }
             <p>You can follow the updated information on our <a href="${statuspage_url}">status page</a>.</p>
             %{ endif }

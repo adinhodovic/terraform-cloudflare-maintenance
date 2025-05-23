@@ -8,6 +8,7 @@ resource "cloudflare_workers_script" "this" {
     image_url      = var.image_url
     font           = var.font
     email          = var.email
+    info_html      = var.info_html
     statuspage_url = var.statuspage_url
     google_font    = replace(var.font, " ", "+")
   })
