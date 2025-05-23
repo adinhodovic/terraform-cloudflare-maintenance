@@ -30,7 +30,7 @@ Simple maintenance page with your logo, fav icon, company name, font and email w
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.10.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.11.0"
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*", "hodovi.cc/example/*"]
   company_name    = "HoneyLogic"
@@ -47,7 +47,7 @@ maintenance starts/ends:
 
 ```terraform
 module "hodovi_cc_maintenance" {
-  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.10.0"
+  source          = "git::git@github.com:adinhodovic/terraform-cloudflare-maintenance.git?ref=0.11.0"
   enabled         = false
   cloudflare_zone = "hodovi.cc"
   patterns        = ["hodovi.cc/maintenance/*"]
