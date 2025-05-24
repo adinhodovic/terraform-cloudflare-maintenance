@@ -120,9 +120,9 @@ const maintenancePage = `
     <div class="content">
         <img class="logo" src="${logo_url}" alt="${company_name}">
         <div class="info">
-            {% if info_html != "" %}
+            %{ if info_html != "" }
             ${info_html}
-            {% endif %}
+            %{ endif }
             %{ if statuspage_url != "null" }
             <p>You can follow the updated information on our <a href="${statuspage_url}">status page</a>.</p>
             %{ endif }
