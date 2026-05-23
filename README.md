@@ -16,15 +16,13 @@ You can [preview the full page here](https://hodovi.cc/maintenance/).
 
 A detailed explanation of [the implementation can be found here.](https://hodovi.cc/blog/quick-pretty-and-easy-maintenance-page-using-cloudflare-workers-terraform/)
 
-Export cloudflare credentials
+Export the Cloudflare account ID used by the module
 
 ```bash
-TF_VAR_cloudflare_email=xxx
-TF_VAR_cloudflare_api_key=xxx
 TF_VAR_cloudflare_account_id=xxx
 ```
 
-If using a token, make sure it has all the necessary permissions
+If you use a token-based Cloudflare provider configuration, make sure it has the necessary permissions
 
 Simple maintenance page with your logo, fav icon, company name, font and email with multiple routes on the same domain:
 
@@ -68,13 +66,13 @@ Example can be found in examples/root-example.
 | Name | Version |
 |------|---------|
 | terraform | >= 1.0.0 |
-| cloudflare | >= 5.1.0 |
+| cloudflare | >= 5.19.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| cloudflare | >= 5.1.0 |
+| cloudflare | >= 5.19.1 |
 
 ## Resources
 
