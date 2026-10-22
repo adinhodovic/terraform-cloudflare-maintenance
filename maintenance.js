@@ -18,9 +18,10 @@ async function fetchAndReplace(request) {
   }
 
   // Allow users to access paths that are whitelisted using regex expressions
-  if (WHITELIST_PATH !== "null") {
+  const whitelistPath = WHITELIST_PATH.trim()
+  if (whitelistPath !== "" && whitelistPath !== "null") {
     const { pathname } = new URL(request.url);
-    if (pathname.match(WHITELIST_PATH))
+    if (pathname.match(whitelistPath))
     {
       return fetch(request)
     }
