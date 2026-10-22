@@ -18,6 +18,14 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Synthetic Worker tests
+        run: npm test
+
       - name: Terraform Format
         run: terraform fmt -diff -check
 

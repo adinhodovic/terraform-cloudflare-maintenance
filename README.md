@@ -101,7 +101,7 @@ Example can be found in examples/root-example.
 | patterns | The DNS pattern list to deploy the maintenance page to. | `list(string)` | n/a | yes |
 | statuspage\_url | The status page address to get updated information. | `string` | `"null"` | no |
 | whitelist\_ips | The IPs that are whitelisted to bypass the maintenance page. | `string` | `"null"` | no |
-| whitelist\_path | The paths that are whitelisted defined with a regex expression to bypass the maintenance page. | `string` | `"null"` | no |
+| whitelist\_path | A regex expression for paths to bypass maintenance; empty, whitespace-only, or `"null"` disables path whitelisting. | `string` | `"null"` | no |
 <!-- END_TF_DOCS -->
 
 ## Notes

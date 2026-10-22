@@ -75,5 +75,5 @@ variable "whitelist_ips" {
 variable "whitelist_path" {
   type        = string
   default     = "null"
-  description = "The paths that are whitelisted defined with a regex expression to bypass the maintenance page."
+  description = "A regex expression for paths to bypass maintenance; empty, whitespace-only, or \"null\" disables path whitelisting."
 }
